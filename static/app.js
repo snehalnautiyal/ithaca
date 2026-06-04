@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('agent-btn').addEventListener('click', Ithaca.showAgentPage);
   // Research page
   document.getElementById('research-btn').addEventListener('click', Ithaca.showResearchPage);
+  // Compare page
+  document.getElementById('compare-btn').addEventListener('click', Ithaca.showComparePage);
   document.getElementById('close-settings').addEventListener('click', () => {
     Ithaca.saveSettings();
     document.getElementById('settings-modal').classList.add('hidden');
