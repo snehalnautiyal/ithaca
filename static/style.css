@@ -125,3 +125,25 @@ main { flex: 1; display: flex; flex-direction: column; overflow: hidden; positio
 .diff-content { padding: .75rem; font-size: .9rem; font-family: 'SF Mono', monospace; }
 .diff-del { background: rgba(248,113,113,.1); color: #f87171; padding: .4rem .6rem; border-radius: 4px; margin-bottom: .5rem; text-decoration: line-through; white-space: pre-wrap; }
 .diff-add { background: rgba(74,222,128,.1); color: #4ade80; padding: .4rem .6rem; border-radius: 4px; white-space: pre-wrap; }
+
+/* Agent page */
+#agent-page { display: flex; flex-direction: column; height: 100%; padding: 1.5rem 2rem; }
+.agent-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.agent-header h2 { font-size: 1.1rem; color: var(--accent); }
+.agent-trace { flex: 1; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; padding: .75rem; margin-bottom: 1rem; }
+.trace-step { padding: .4rem .6rem; margin-bottom: .4rem; border-radius: 6px; font-size: .88rem; }
+.trace-thinking { color: var(--muted); }
+.trace-tool { background: rgba(124,106,247,.06); border: 1px solid var(--border); border-radius: 6px; padding: .4rem .6rem; }
+.trace-tool summary { cursor: pointer; color: var(--accent); }
+.trace-tool pre { margin-top: .4rem; font-size: .8rem; white-space: pre-wrap; color: var(--muted); }
+.trace-result { background: rgba(74,222,128,.05); border: 1px solid var(--border); border-radius: 6px; padding: .4rem .6rem; }
+.trace-result summary { cursor: pointer; color: #4ade80; }
+.trace-result pre { margin-top: .4rem; font-size: .8rem; white-space: pre-wrap; color: var(--muted); max-height: 200px; overflow-y: auto; }
+.trace-warn { color: #fbbf24; background: rgba(251,191,36,.08); }
+.trace-answer { background: var(--surface); border: 1px solid var(--border); padding: .75rem; border-radius: 8px; }
+.trace-error { color: var(--danger); }
+.agent-input-area { display: flex; flex-direction: column; gap: .5rem; border-top: 1px solid var(--border); padding-top: .75rem; }
+.agent-input-area textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: .7rem 1rem; font-size: .95rem; font-family: inherit; outline: none; resize: none; }
+.agent-input-area textarea:focus { border-color: var(--accent); }
+.agent-confirm-opts { display: flex; gap: 1rem; font-size: .85rem; color: var(--muted); }
+.agent-confirm-opts label { display: flex; align-items: center; gap: .3rem; }

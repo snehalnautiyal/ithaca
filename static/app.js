@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('memory-btn').addEventListener('click', Ithaca.showMemoryPage);
   // Documents page
   document.getElementById('docs-btn').addEventListener('click', Ithaca.showDocsPage);
+  // Agent page
+  document.getElementById('agent-btn').addEventListener('click', Ithaca.showAgentPage);
   document.getElementById('close-settings').addEventListener('click', () => {
     Ithaca.saveSettings();
     document.getElementById('settings-modal').classList.add('hidden');
