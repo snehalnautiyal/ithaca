@@ -208,3 +208,36 @@ main { flex: 1; display: flex; flex-direction: column; overflow: hidden; positio
   header { padding: .5rem .75rem; }
   aside { max-height: 80px; }
 }
+
+/* Cookbook */
+#cookbook-page { display: flex; flex-direction: column; height: 100%; padding: 1.5rem 2rem; overflow-y: auto; }
+.cookbook-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.cookbook-header h2 { font-size: 1.1rem; color: var(--accent); }
+#cookbook-page h3 { font-size: .9rem; color: var(--muted); margin: 1rem 0 .5rem; text-transform: uppercase; letter-spacing: .04em; }
+.hw-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .85rem; padding: .75rem; background: var(--surface); border-radius: 8px; border: 1px solid var(--border); }
+.model-card { display: flex; align-items: center; justify-content: space-between; padding: .6rem .8rem; border: 1px solid var(--border); border-radius: 8px; margin-bottom: .4rem; }
+.model-card.installed { background: rgba(74,222,128,.05); }
+.model-meta { font-size: .8rem; color: var(--muted); margin-left: .5rem; }
+.model-card-actions { display: flex; align-items: center; gap: .5rem; }
+.model-size { font-size: .8rem; color: var(--muted); }
+.fit-badge { font-size: .75rem; padding: .15rem .5rem; border-radius: 4px; font-weight: 600; }
+.fit-badge.excellent { background: rgba(74,222,128,.15); color: #4ade80; }
+.fit-badge.good { background: rgba(96,165,250,.15); color: #60a5fa; }
+.fit-badge.tight { background: rgba(251,191,36,.15); color: #fbbf24; }
+.fit-badge.too_large { background: rgba(248,113,113,.15); color: #f87171; }
+.btn-sm { font-size: .75rem; padding: .2rem .5rem; }
+
+/* Productivity */
+#productivity-page { display: flex; flex-direction: column; height: 100%; padding: 1.5rem 2rem; overflow-y: auto; }
+.prod-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.prod-header h2 { font-size: 1.1rem; color: var(--accent); }
+.prod-tabs { display: flex; gap: .25rem; }
+.prod-tabs .btn-ghost.active { border-color: var(--accent); color: var(--accent); }
+.prod-content { flex: 1; }
+.prod-add { display: flex; gap: .5rem; margin-bottom: 1rem; }
+.prod-add input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: .5rem .75rem; font-size: .9rem; outline: none; }
+.prod-add input:focus { border-color: var(--accent); }
+.note-item { display: flex; align-items: center; gap: .5rem; padding: .5rem .4rem; border-bottom: 1px solid var(--border); font-size: .9rem; }
+.note-item.done span { text-decoration: line-through; color: var(--muted); }
+.event-item { display: flex; align-items: center; gap: .75rem; padding: .5rem .4rem; border-bottom: 1px solid var(--border); font-size: .9rem; }
+.event-time { font-size: .8rem; color: var(--accent); min-width: 120px; }

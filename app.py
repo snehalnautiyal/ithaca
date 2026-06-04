@@ -18,6 +18,8 @@ from routes.document import router as document_router
 from routes.agent import router as agent_router
 from routes.research import router as research_router
 from routes.compare import router as compare_router
+from routes.cookbook import router as cookbook_router
+from routes.productivity import router as productivity_router
 
 
 @asynccontextmanager
@@ -42,6 +44,8 @@ app.include_router(document_router)
 app.include_router(agent_router)
 app.include_router(research_router)
 app.include_router(compare_router)
+app.include_router(cookbook_router)
+app.include_router(productivity_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 

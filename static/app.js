@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Settings modal
   document.getElementById('settings-btn').addEventListener('click', Ithaca.openSettings);
+  // Cookbook page
+  document.getElementById('cookbook-btn').addEventListener('click', Ithaca.showCookbookPage);
+  // Productivity page
+  document.getElementById('productivity-btn').addEventListener('click', Ithaca.showProductivityPage);
   // Memory page
   document.getElementById('memory-btn').addEventListener('click', Ithaca.showMemoryPage);
   // Documents page
