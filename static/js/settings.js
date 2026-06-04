@@ -1,34 +1,27 @@
-// Ithaca — settings modal
+// Ithaca — settings (Shoelace)
 window.Ithaca = window.Ithaca || {};
 
 Ithaca.openSettings = async function() {
-  document.getElementById('settings-modal').classList.remove('hidden');
+  document.getElementById('settings-modal').show();
   const resp = await fetch('/api/models/settings');
   const settings = await resp.json();
 
-  // Populate provider select
   const provSelect = document.getElementById('provider-select');
   provSelect.innerHTML = '';
   (settings.providers || []).forEach(p => {
-    const opt = document.createElement('option');
+    const opt = document.createElement('sl-option');
     opt.value = p.name;
     opt.textContent = p.name;
-    if (p.name === settings.active_provider) opt.selected = true;
     provSelect.appendChild(opt);
   });
+  provSelect.value = settings.active_provider || '';
 
-  // Load models for active provider
   Ithaca.loadModels(settings.active_model);
 
-  // Show provider list
   const list = document.getElementById('provider-list');
-  list.innerHTML = '';
-  (settings.providers || []).forEach(p => {
-    const div = document.createElement('div');
-    div.className = 'provider-item';
-    div.textContent = `${p.name} — ${p.base_url}`;
-    list.appendChild(div);
-  });
+  list.innerHTML = (settings.providers || []).map(p =>
+    `<div class="provider-item">${p.name} — ${p.base_url}</div>`
+  ).join('');
 };
 
 Ithaca.loadModels = async function(activeModel) {
@@ -37,12 +30,12 @@ Ithaca.loadModels = async function(activeModel) {
   const modelSelect = document.getElementById('model-select');
   modelSelect.innerHTML = '';
   (data.models || []).forEach(m => {
-    const opt = document.createElement('option');
+    const opt = document.createElement('sl-option');
     opt.value = m;
     opt.textContent = m;
-    if (m === (activeModel || data.active_model)) opt.selected = true;
     modelSelect.appendChild(opt);
   });
+  modelSelect.value = activeModel || data.active_model || '';
 };
 
 Ithaca.saveSettings = async function() {

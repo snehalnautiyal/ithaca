@@ -28,7 +28,6 @@ Ithaca.sendMessage = async function() {
   if (!content || !Ithaca.currentSession) return;
 
   input.value = '';
-  input.style.height = 'auto';
   Ithaca.appendMessage('user', content);
 
   // Create assistant bubble to stream into

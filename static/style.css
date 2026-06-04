@@ -9,6 +9,15 @@
   --accent: #7c6af7;
   --accent-hover: #6a59e0;
   --danger: #f87171;
+  /* Shoelace overrides */
+  --sl-color-primary-600: #7c6af7;
+  --sl-color-primary-700: #6a59e0;
+  --sl-panel-background-color: #1a1a1a;
+  --sl-panel-border-color: #2a2a2a;
+  --sl-input-background-color: #0f0f0f;
+  --sl-input-border-color: #2a2a2a;
+  --sl-input-color: #e0e0e0;
+  --sl-input-placeholder-color: #666;
 }
 
 body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; height: 100vh; overflow: hidden; }
