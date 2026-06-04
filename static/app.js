@@ -1,5 +1,32 @@
-// Ithaca — app.js (Phase 1 shell, no chat yet)
-document.getElementById("new-chat")?.addEventListener("click", () => {
-  // Phase 2 will wire this up
-  console.log("New chat — coming in Phase 2");
+// Ithaca — main wiring
+document.addEventListener('DOMContentLoaded', () => {
+  Ithaca.loadSessions();
+
+  document.getElementById('new-chat').addEventListener('click', Ithaca.createSession);
+
+  document.getElementById('send-btn').addEventListener('click', Ithaca.sendMessage);
+
+  const input = document.getElementById('chat-input');
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      Ithaca.sendMessage();
+    }
+  });
+  // Auto-resize textarea
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 200) + 'px';
+  });
+
+  // Settings modal
+  document.getElementById('settings-btn').addEventListener('click', Ithaca.openSettings);
+  document.getElementById('close-settings').addEventListener('click', () => {
+    Ithaca.saveSettings();
+    document.getElementById('settings-modal').classList.add('hidden');
+  });
+  document.getElementById('add-provider-btn').addEventListener('click', Ithaca.addProvider);
+  document.getElementById('provider-select').addEventListener('change', () => {
+    Ithaca.saveSettings().then(() => Ithaca.loadModels());
+  });
 });

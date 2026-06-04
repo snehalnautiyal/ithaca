@@ -10,6 +10,9 @@ from core.config import settings
 from core.database import SessionLocal, create_tables
 from core.auth import ensure_admin
 from core.middleware import AuthMiddleware
+from routes.session import router as session_router
+from routes.chat import router as chat_router
+from routes.model import router as model_router
 
 
 @asynccontextmanager
@@ -26,6 +29,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Ithaca", lifespan=lifespan)
 app.add_middleware(AuthMiddleware)
 app.include_router(auth_router)
+app.include_router(session_router)
+app.include_router(chat_router)
+app.include_router(model_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
