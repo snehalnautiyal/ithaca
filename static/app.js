@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Settings modal
   document.getElementById('settings-btn').addEventListener('click', Ithaca.openSettings);
+  // Memory page
+  document.getElementById('memory-btn').addEventListener('click', Ithaca.showMemoryPage);
   document.getElementById('close-settings').addEventListener('click', () => {
     Ithaca.saveSettings();
     document.getElementById('settings-modal').classList.add('hidden');

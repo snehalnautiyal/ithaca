@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from core.database import ChatSession, Message, get_db
 from src.llm_core.provider import get_provider
+from src.chat_processor.memory_hooks import extract_memories, inject_memories
 
 router = APIRouter(prefix="/api", tags=["chat"])
 
@@ -36,10 +37,13 @@ async def chat(body: ChatRequest, db: Session = Depends(get_db)):
     messages = db.query(Message).filter(Message.session_id == body.session_id).order_by(Message.created_at).all()
     history = [{"role": m.role, "content": m.content} for m in messages]
 
-    return StreamingResponse(_stream_response(history, body.session_id, db), media_type="text/event-stream")
+    # Inject relevant memories into context
+    history = inject_memories(body.content, history)
+
+    return StreamingResponse(_stream_response(history, body.session_id, body.content, db), media_type="text/event-stream")
 
 
-async def _stream_response(history: list[dict], session_id: str, db: Session):
+async def _stream_response(history: list[dict], session_id: str, user_content: str, db: Session):
     full_response = ""
     try:
         provider = get_provider()
@@ -55,6 +59,13 @@ async def _stream_response(history: list[dict], session_id: str, db: Session):
             assistant_msg = Message(session_id=session_id, role="assistant", content=full_response)
             db.add(assistant_msg)
             db.commit()
+
+    # Extract memories from this exchange (fire-and-forget)
+    if full_response:
+        try:
+            await extract_memories(user_content, full_response, session_id)
+        except Exception:
+            pass
 
     yield "event: done\ndata: {}\n\n"
 
