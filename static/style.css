@@ -102,3 +102,26 @@ main { flex: 1; display: flex; flex-direction: column; overflow: hidden; positio
 .memory-add input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: .55rem .75rem; font-size: .9rem; outline: none; }
 .memory-add input:focus { border-color: var(--accent); }
 .muted { color: var(--muted); font-size: .9rem; padding: 1rem 0; }
+
+/* Documents page */
+#docs-page { display: flex; flex-direction: column; height: 100%; }
+.docs-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+.docs-header h2 { font-size: 1.1rem; color: var(--accent); }
+.docs-actions { display: flex; gap: .5rem; align-items: center; }
+.docs-actions select { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: .3rem .5rem; font-size: .85rem; }
+.docs-layout { display: flex; flex: 1; overflow: hidden; }
+.docs-sidebar { width: 200px; border-right: 1px solid var(--border); overflow-y: auto; }
+.docs-sidebar ul { list-style: none; }
+.doc-item { display: flex; align-items: center; justify-content: space-between; padding: .5rem .75rem; cursor: pointer; font-size: .85rem; border-left: 3px solid transparent; }
+.doc-item:hover { background: var(--border); }
+.doc-item.active { border-left-color: var(--accent); background: rgba(124,106,247,.08); }
+.docs-editor-area { flex: 1; display: flex; flex-direction: column; padding: 1rem; overflow: hidden; }
+.doc-editor { flex: 1; resize: none; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 1rem; font-family: 'SF Mono', monospace; font-size: .9rem; outline: none; }
+.doc-editor:focus { border-color: var(--accent); }
+.doc-assist-bar { display: flex; gap: .5rem; align-items: center; margin-top: .5rem; }
+.doc-assist-bar select { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: .3rem .5rem; font-size: .85rem; }
+.doc-diff { margin-top: .75rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.diff-header { display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem; background: var(--surface); border-bottom: 1px solid var(--border); font-size: .85rem; color: var(--muted); }
+.diff-content { padding: .75rem; font-size: .9rem; font-family: 'SF Mono', monospace; }
+.diff-del { background: rgba(248,113,113,.1); color: #f87171; padding: .4rem .6rem; border-radius: 4px; margin-bottom: .5rem; text-decoration: line-through; white-space: pre-wrap; }
+.diff-add { background: rgba(74,222,128,.1); color: #4ade80; padding: .4rem .6rem; border-radius: 4px; white-space: pre-wrap; }

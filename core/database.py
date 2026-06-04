@@ -46,6 +46,15 @@ class Message(Base):
     session = relationship("ChatSession", back_populates="messages")
 
 
+class Document(Base):
+    __tablename__ = "documents"
+    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    title = Column(String(256), nullable=False)
+    content_type = Column(String(16), nullable=False, default="markdown")  # markdown|html|csv
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 def create_tables() -> None:
     Base.metadata.create_all(bind=engine)
 
