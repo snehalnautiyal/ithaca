@@ -16,6 +16,7 @@ from routes.model import router as model_router
 from routes.memory import router as memory_router
 from routes.document import router as document_router
 from routes.agent import router as agent_router
+from routes.research import router as research_router
 
 
 @asynccontextmanager
@@ -38,6 +39,7 @@ app.include_router(model_router)
 app.include_router(memory_router)
 app.include_router(document_router)
 app.include_router(agent_router)
+app.include_router(research_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
