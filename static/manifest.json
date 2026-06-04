@@ -1,0 +1,13 @@
+{
+  "name": "Ithaca",
+  "short_name": "Ithaca",
+  "description": "Your data, finally home. A self-hosted AI workspace.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#7c6af7",
+  "icons": [
+    {"src": "/static/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/static/icon-512.png", "sizes": "512x512", "type": "image/png"}
+    ]
+}

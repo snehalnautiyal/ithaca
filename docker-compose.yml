@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  ithaca:
+    build: .
+    ports:
+      - "127.0.0.1:7860:7860"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - APP_BIND=0.0.0.0
+      - APP_PORT=7860
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - SEARXNG_URL=http://searxng:8080
+    depends_on:
+      - chromadb
+      - searxng
+
+  chromadb:
+    image: chromadb/chroma:0.5.23
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./data/chroma-server:/chroma/chroma
+
+  searxng:
+    image: searxng/searxng:latest
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+    volumes:
+      - ./data/searxng:/etc/searxng
+
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    ports:
+      - "127.0.0.1:8090:80"
+    command: serve
+    volumes:
+      - ./data/ntfy:/var/lib/ntfy
